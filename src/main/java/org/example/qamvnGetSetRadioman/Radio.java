@@ -1,8 +1,17 @@
 package org.example.qamvnGetSetRadioman;
 
 public class Radio {
-    public int currentRadioStationNumber;
-    public int currentVolume;
+    private int currentRadioStationNumber;
+    private int currentVolume;
+    private int maxStation;
+
+    public Radio(){
+        maxStation = 9;
+    }
+    public Radio(int stationCount){
+        maxStation = stationCount - 1;
+    }
+
 
 
     public int getStationNumber() {
@@ -17,7 +26,7 @@ public class Radio {
         if (newCurrentRadioStationNumber < 0) {
             return;
         }
-        if (newCurrentRadioStationNumber > 9) {
+        if (newCurrentRadioStationNumber > maxStation) {
             return;
         }
         currentRadioStationNumber = newCurrentRadioStationNumber;
@@ -27,14 +36,14 @@ public class Radio {
         if (newCurrentVolume < 0) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > 100) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void setMaxRadioStation() {
-        currentRadioStationNumber = 9;
+        currentRadioStationNumber = maxStation ;
     }
 
     public void setMinRadioStation() {
@@ -42,7 +51,7 @@ public class Radio {
     }
 
     public void setMaxVolume() {
-        currentVolume = 10;
+        currentVolume = 100;
     }
 
     public void setMinVolume() {
@@ -52,7 +61,7 @@ public class Radio {
 
     public void next() {
 
-        if (getStationNumber() < 9) {
+        if (getStationNumber() < maxStation) {
             currentRadioStationNumber = currentRadioStationNumber + 1;
         } else {
             currentRadioStationNumber = 0;
@@ -64,16 +73,16 @@ public class Radio {
         if (getStationNumber() > 0) {
             currentRadioStationNumber = currentRadioStationNumber - 1;
         } else {
-            currentRadioStationNumber = 9;
+            currentRadioStationNumber = maxStation;
         }
     }
 
     public void increaseVolume() {
 
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         } else {
-            currentVolume = 10;
+            currentVolume = 100;
         }
     }
 
